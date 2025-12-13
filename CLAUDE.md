@@ -46,3 +46,8 @@ flutter build windows      # Windows
 - Dart SDK: ^3.10.3
 - 使用 `flutter_lints` 進行程式碼規範檢查
 - 分析設定位於 `analysis_options.yaml`
+- 1、請將規畫書寫成 prd.md 放在 docs 目錄下。                                                                
+2、請將規畫書拆解成不同的子功能 todo, 然後放在 docs 目錄下的 todo.md 文件。        
+3、更新CLAUDE.md 文件，請寫上每完成一個 todo的功能，要將 todo.md 裡面對應的功能劃掉。   
+4、一律用繁體中文回應。  
+5、每個文件的頂部要加上詳細的註解。

@@ -10,6 +10,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/constants/app_colors.dart';
+import '../../../core/constants/app_strings.dart';
 import '../../../data/models/portfolio_item_model.dart';
 
 /// 作品案例卡片組件
@@ -63,7 +64,7 @@ class PortfolioCard extends StatelessWidget {
                               color: Colors.black.withValues(alpha: 0.3),
                               child: const Center(
                                 child: Text(
-                                  'Before',
+                                  AppStrings.beforeLabel,
                                   style: TextStyle(
                                     fontSize: 14,
                                     color: Colors.white,
@@ -90,7 +91,7 @@ class PortfolioCard extends StatelessWidget {
                               color: Colors.black.withValues(alpha: 0.3),
                               child: const Center(
                                 child: Text(
-                                  'After',
+                                  AppStrings.afterLabel,
                                   style: TextStyle(
                                     fontSize: 14,
                                     color: Colors.white,

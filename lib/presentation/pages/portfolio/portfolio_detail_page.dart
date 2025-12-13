@@ -158,7 +158,7 @@ class _BeforeAfterSliderState extends State<_BeforeAfterSlider> {
                       borderRadius: BorderRadius.circular(4),
                     ),
                     child: const Text(
-                      'After',
+                      AppStrings.afterLabel,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 14,
@@ -191,7 +191,7 @@ class _BeforeAfterSliderState extends State<_BeforeAfterSlider> {
                         borderRadius: BorderRadius.circular(4),
                       ),
                       child: const Text(
-                        'Before',
+                        AppStrings.beforeLabel,
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 14,

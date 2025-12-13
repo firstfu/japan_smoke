@@ -75,7 +75,7 @@ class PortfolioPage extends StatelessWidget {
                         color: Colors.black.withValues(alpha: 0.3),
                         child: const Center(
                           child: Text(
-                            'Before',
+                            AppStrings.beforeLabel,
                             style: TextStyle(
                               fontSize: 16,
                               color: Colors.white,
@@ -102,7 +102,7 @@ class PortfolioPage extends StatelessWidget {
                         color: Colors.black.withValues(alpha: 0.3),
                         child: const Center(
                           child: Text(
-                            'After',
+                            AppStrings.afterLabel,
                             style: TextStyle(
                               fontSize: 16,
                               color: Colors.white,

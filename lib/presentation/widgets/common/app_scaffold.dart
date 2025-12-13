@@ -152,89 +152,95 @@ class AppScaffold extends StatelessWidget {
   /// 建構側邊抽屜
   Widget _buildDrawer(BuildContext context) {
     return Drawer(
-      child: SafeArea(
-        child: Column(
-          children: [
-            // 標頭
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(24),
-              decoration: const BoxDecoration(
-                color: AppColors.primary,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    AppStrings.appName,
-                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                          color: AppColors.textLight,
-                        ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    AppStrings.appSlogan,
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: AppColors.textLight.withValues(alpha: 0.8),
-                        ),
-                  ),
-                ],
-              ),
+      child: Column(
+        children: [
+          // 標頭（滿版延伸到頂部）
+          Container(
+            width: double.infinity,
+            padding: EdgeInsets.only(
+              top: MediaQuery.of(context).padding.top + 24,
+              left: 24,
+              right: 24,
+              bottom: 24,
             ),
-
-            // 選單項目
-            Expanded(
-              child: ListView(
-                padding: const EdgeInsets.symmetric(vertical: 8),
-                children: [
-                  _buildDrawerItem(
-                    context,
-                    icon: Icons.home,
-                    label: AppStrings.navHome,
-                    route: RoutePaths.home,
-                  ),
-                  _buildDrawerItem(
-                    context,
-                    icon: Icons.build,
-                    label: AppStrings.navServices,
-                    route: RoutePaths.services,
-                  ),
-                  _buildDrawerItem(
-                    context,
-                    icon: Icons.photo_library,
-                    label: AppStrings.navPortfolio,
-                    route: RoutePaths.portfolio,
-                  ),
-                  _buildDrawerItem(
-                    context,
-                    icon: Icons.article,
-                    label: AppStrings.navBlog,
-                    route: RoutePaths.blog,
-                  ),
-                  _buildDrawerItem(
-                    context,
-                    icon: Icons.info,
-                    label: AppStrings.navAbout,
-                    route: RoutePaths.about,
-                  ),
-                  _buildDrawerItem(
-                    context,
-                    icon: Icons.help,
-                    label: AppStrings.navFaq,
-                    route: RoutePaths.faq,
-                  ),
-                  _buildDrawerItem(
-                    context,
-                    icon: Icons.phone,
-                    label: AppStrings.navContact,
-                    route: RoutePaths.contact,
-                  ),
-                ],
-              ),
+            decoration: const BoxDecoration(
+              color: AppColors.primary,
             ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  AppStrings.appName,
+                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                        color: AppColors.textLight,
+                      ),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  AppStrings.appSlogan,
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: AppColors.textLight.withValues(alpha: 0.8),
+                      ),
+                ),
+              ],
+            ),
+          ),
 
-            // 底部資訊
-            Container(
+          // 選單項目
+          Expanded(
+            child: ListView(
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              children: [
+                _buildDrawerItem(
+                  context,
+                  icon: Icons.home,
+                  label: AppStrings.navHome,
+                  route: RoutePaths.home,
+                ),
+                _buildDrawerItem(
+                  context,
+                  icon: Icons.build,
+                  label: AppStrings.navServices,
+                  route: RoutePaths.services,
+                ),
+                _buildDrawerItem(
+                  context,
+                  icon: Icons.photo_library,
+                  label: AppStrings.navPortfolio,
+                  route: RoutePaths.portfolio,
+                ),
+                _buildDrawerItem(
+                  context,
+                  icon: Icons.article,
+                  label: AppStrings.navBlog,
+                  route: RoutePaths.blog,
+                ),
+                _buildDrawerItem(
+                  context,
+                  icon: Icons.info,
+                  label: AppStrings.navAbout,
+                  route: RoutePaths.about,
+                ),
+                _buildDrawerItem(
+                  context,
+                  icon: Icons.help,
+                  label: AppStrings.navFaq,
+                  route: RoutePaths.faq,
+                ),
+                _buildDrawerItem(
+                  context,
+                  icon: Icons.phone,
+                  label: AppStrings.navContact,
+                  route: RoutePaths.contact,
+                ),
+              ],
+            ),
+          ),
+
+          // 底部資訊
+          SafeArea(
+            top: false,
+            child: Container(
               padding: const EdgeInsets.all(16),
               child: Column(
                 children: [
@@ -275,8 +281,8 @@ class AppScaffold extends StatelessWidget {
                 ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

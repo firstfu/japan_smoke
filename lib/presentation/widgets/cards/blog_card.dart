@@ -53,12 +53,11 @@ class BlogCard extends StatelessWidget {
             Container(
               width: double.infinity,
               height: 160,
-              color: AppColors.secondary,
-              child: Center(
-                child: Icon(
-                  Icons.article,
-                  size: 48,
-                  color: AppColors.textMuted,
+              decoration: BoxDecoration(
+                color: AppColors.secondary,
+                image: DecorationImage(
+                  image: AssetImage(post.image),
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
@@ -161,12 +160,11 @@ class BlogCard extends StatelessWidget {
             Container(
               width: 120,
               height: 120,
-              color: AppColors.secondary,
-              child: Center(
-                child: Icon(
-                  Icons.article,
-                  size: 32,
-                  color: AppColors.textMuted,
+              decoration: BoxDecoration(
+                color: AppColors.secondary,
+                image: DecorationImage(
+                  image: AssetImage(post.image),
+                  fit: BoxFit.cover,
                 ),
               ),
             ),

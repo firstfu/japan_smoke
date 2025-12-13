@@ -43,16 +43,15 @@ class ServiceDetailPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // 圖片區域（佔位）
+            // 圖片區域
             Container(
               width: double.infinity,
               height: 200,
-              color: AppColors.secondary,
-              child: Center(
-                child: Icon(
-                  _getServiceIcon(service.icon),
-                  size: 64,
-                  color: AppColors.primary,
+              decoration: BoxDecoration(
+                color: AppColors.secondary,
+                image: DecorationImage(
+                  image: AssetImage(service.image),
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
@@ -145,20 +144,5 @@ class ServiceDetailPage extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  IconData _getServiceIcon(String iconName) {
-    switch (iconName) {
-      case 'droplets':
-        return Icons.water_drop;
-      case 'paintbrush':
-        return Icons.brush;
-      case 'roller':
-        return Icons.format_paint;
-      case 'shield':
-        return Icons.shield;
-      default:
-        return Icons.build;
-    }
   }
 }

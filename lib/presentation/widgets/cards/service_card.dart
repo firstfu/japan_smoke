@@ -106,12 +106,11 @@ class ServiceCard extends StatelessWidget {
             Container(
               width: double.infinity,
               height: 140,
-              color: AppColors.secondary,
-              child: Center(
-                child: Icon(
-                  _getServiceIcon(service.id),
-                  size: 56,
-                  color: AppColors.primary,
+              decoration: BoxDecoration(
+                color: AppColors.secondary,
+                image: DecorationImage(
+                  image: AssetImage(service.image),
+                  fit: BoxFit.cover,
                 ),
               ),
             ),

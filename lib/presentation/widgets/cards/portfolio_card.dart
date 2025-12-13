@@ -45,40 +45,31 @@ class PortfolioCard extends StatelessWidget {
             Container(
               width: double.infinity,
               height: 160,
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [AppColors.secondary, AppColors.primary],
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight,
-                ),
-              ),
               child: Stack(
                 children: [
-                  // Before 區域
+                  // Before/After 圖片區域
                   Positioned.fill(
                     child: Row(
                       children: [
                         Expanded(
                           child: Container(
-                            color: AppColors.secondary,
-                            child: const Center(
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Icon(
-                                    Icons.image,
-                                    size: 32,
-                                    color: AppColors.textMuted,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage(portfolio.beforeImage),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            child: Container(
+                              color: Colors.black.withValues(alpha: 0.3),
+                              child: const Center(
+                                child: Text(
+                                  'Before',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
                                   ),
-                                  SizedBox(height: 4),
-                                  Text(
-                                    'Before',
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      color: AppColors.textMuted,
-                                    ),
-                                  ),
-                                ],
+                                ),
                               ),
                             ),
                           ),
@@ -89,25 +80,23 @@ class PortfolioCard extends StatelessWidget {
                         ),
                         Expanded(
                           child: Container(
-                            color: AppColors.primary.withValues(alpha: 0.1),
-                            child: const Center(
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Icon(
-                                    Icons.image,
-                                    size: 32,
-                                    color: AppColors.primary,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage(portfolio.afterImage),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            child: Container(
+                              color: Colors.black.withValues(alpha: 0.3),
+                              child: const Center(
+                                child: Text(
+                                  'After',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
                                   ),
-                                  SizedBox(height: 4),
-                                  Text(
-                                    'After',
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      color: AppColors.primary,
-                                    ),
-                                  ),
-                                ],
+                                ),
                               ),
                             ),
                           ),

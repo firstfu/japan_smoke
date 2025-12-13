@@ -57,16 +57,15 @@ class BlogPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // 圖片區域（佔位）
+            // 圖片區域
             Container(
               width: double.infinity,
               height: 160,
-              color: AppColors.secondary,
-              child: Center(
-                child: Icon(
-                  Icons.article,
-                  size: 48,
-                  color: AppColors.textMuted,
+              decoration: BoxDecoration(
+                color: AppColors.secondary,
+                image: DecorationImage(
+                  image: AssetImage(post.image),
+                  fit: BoxFit.cover,
                 ),
               ),
             ),

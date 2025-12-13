@@ -139,36 +139,64 @@ class _BeforeAfterSliderState extends State<_BeforeAfterSlider> {
         },
         child: Stack(
           children: [
-            // After 圖片（底層）- 佔位
+            // After 圖片（底層）
             Positioned.fill(
               child: Container(
-                color: AppColors.primary.withValues(alpha: 0.3),
-                child: const Center(
-                  child: Text(
-                    AppStrings.afterLabel,
-                    style: TextStyle(
-                      color: AppColors.textLight,
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(widget.item.afterImage),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                child: Align(
+                  alignment: Alignment.topRight,
+                  child: Container(
+                    margin: const EdgeInsets.all(12),
+                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                    decoration: BoxDecoration(
+                      color: Colors.black.withValues(alpha: 0.6),
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: const Text(
+                      'After',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
 
-            // Before 圖片（上層，可裁切）- 佔位
+            // Before 圖片（上層，可裁切）
             Positioned.fill(
               child: ClipRect(
                 clipper: _SliderClipper(_sliderPosition),
                 child: Container(
-                  color: AppColors.accent.withValues(alpha: 0.3),
-                  child: const Center(
-                    child: Text(
-                      AppStrings.beforeLabel,
-                      style: TextStyle(
-                        color: AppColors.textPrimary,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage(widget.item.beforeImage),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  child: Align(
+                    alignment: Alignment.topLeft,
+                    child: Container(
+                      margin: const EdgeInsets.all(12),
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                      decoration: BoxDecoration(
+                        color: Colors.black.withValues(alpha: 0.6),
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      child: const Text(
+                        'Before',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),

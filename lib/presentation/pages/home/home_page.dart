@@ -66,73 +66,90 @@ class HomePage extends StatelessWidget {
 
   /// Hero 區塊
   Widget _buildHeroSection(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(24),
-      decoration: const BoxDecoration(
-        gradient: AppColors.primaryGradient,
-      ),
-      child: SafeArea(
-        bottom: false,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              AppStrings.heroTitle,
-              style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                    color: AppColors.textLight,
-                    fontWeight: FontWeight.bold,
-                  ),
+    return Stack(
+      children: [
+        // 背景圖片
+        Container(
+          width: double.infinity,
+          height: 320,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: const AssetImage('assets/images/hero-image.png'),
+              fit: BoxFit.cover,
+              colorFilter: ColorFilter.mode(
+                AppColors.primary.withValues(alpha: 0.7),
+                BlendMode.darken,
+              ),
             ),
-            const SizedBox(height: 12),
-            Text(
-              AppStrings.heroSubtitle,
-              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    color: AppColors.textLight.withValues(alpha: 0.9),
-                  ),
-            ),
-            const SizedBox(height: 24),
-            Row(
-              children: [
-                ElevatedButton.icon(
-                  onPressed: () {
-                    // TODO: 導航到聯絡頁面
-                  },
-                  icon: const Icon(Icons.calendar_today),
-                  label: const Text(AppStrings.btnBookNow),
-                ),
-                const SizedBox(width: 12),
-                OutlinedButton.icon(
-                  onPressed: () {
-                    // TODO: 撥打電話
-                  },
-                  style: OutlinedButton.styleFrom(
-                    foregroundColor: AppColors.textLight,
-                    side: const BorderSide(color: AppColors.textLight),
-                  ),
-                  icon: const Icon(Icons.phone),
-                  label: const Text(AppStrings.btnCallNow),
-                ),
-              ],
-            ),
-            const SizedBox(height: 16),
-            // 信任徽章
-            Row(
-              children: [
-                _buildTrustBadge(
-                  icon: Icons.verified,
-                  text: '${AppData.company.satisfactionRate}% 滿意度',
-                ),
-                const SizedBox(width: 16),
-                _buildTrustBadge(
-                  icon: Icons.location_on,
-                  text: AppData.company.region,
-                ),
-              ],
-            ),
-          ],
+          ),
         ),
-      ),
+        // 內容
+        Container(
+          width: double.infinity,
+          padding: const EdgeInsets.all(24),
+          child: SafeArea(
+            bottom: false,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  AppStrings.heroTitle,
+                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                        color: AppColors.textLight,
+                        fontWeight: FontWeight.bold,
+                      ),
+                ),
+                const SizedBox(height: 12),
+                Text(
+                  AppStrings.heroSubtitle,
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                        color: AppColors.textLight.withValues(alpha: 0.9),
+                      ),
+                ),
+                const SizedBox(height: 24),
+                Row(
+                  children: [
+                    ElevatedButton.icon(
+                      onPressed: () {
+                        // TODO: 導航到聯絡頁面
+                      },
+                      icon: const Icon(Icons.calendar_today),
+                      label: const Text(AppStrings.btnBookNow),
+                    ),
+                    const SizedBox(width: 12),
+                    OutlinedButton.icon(
+                      onPressed: () {
+                        // TODO: 撥打電話
+                      },
+                      style: OutlinedButton.styleFrom(
+                        foregroundColor: AppColors.textLight,
+                        side: const BorderSide(color: AppColors.textLight),
+                      ),
+                      icon: const Icon(Icons.phone),
+                      label: const Text(AppStrings.btnCallNow),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 16),
+                // 信任徽章
+                Row(
+                  children: [
+                    _buildTrustBadge(
+                      icon: Icons.verified,
+                      text: '${AppData.company.satisfactionRate}% 滿意度',
+                    ),
+                    const SizedBox(width: 16),
+                    _buildTrustBadge(
+                      icon: Icons.location_on,
+                      text: AppData.company.region,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
     );
   }
 

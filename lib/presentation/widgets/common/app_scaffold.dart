@@ -15,6 +15,9 @@ import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_strings.dart';
 import '../../../core/router/route_names.dart';
 
+/// 全域 Scaffold Key，用於從子頁面打開 Drawer
+final GlobalKey<ScaffoldState> appScaffoldKey = GlobalKey<ScaffoldState>();
+
 /// 應用程式統一頁面框架
 ///
 /// 提供底部導航列和側邊抽屜導航，包裝所有子頁面。
@@ -30,6 +33,7 @@ class AppScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: appScaffoldKey,
       body: child,
       bottomNavigationBar: _buildBottomNavBar(context),
       drawer: _buildDrawer(context),

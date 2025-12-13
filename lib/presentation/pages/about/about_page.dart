@@ -13,6 +13,7 @@ import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_strings.dart';
 import '../../../data/datasources/local/app_data.dart';
 import '../../../data/models/team_member_model.dart';
+import '../../widgets/common/app_scaffold.dart';
 
 /// 關於我們頁面
 class AboutPage extends StatelessWidget {
@@ -23,11 +24,9 @@ class AboutPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(AppStrings.navAbout),
-        leading: Builder(
-          builder: (context) => IconButton(
-            icon: const Icon(Icons.menu),
-            onPressed: () => Scaffold.of(context).openDrawer(),
-          ),
+        leading: IconButton(
+          icon: const Icon(Icons.menu),
+          onPressed: () => appScaffoldKey.currentState?.openDrawer(),
         ),
       ),
       body: SingleChildScrollView(

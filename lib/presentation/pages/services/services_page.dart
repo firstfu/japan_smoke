@@ -15,6 +15,7 @@ import '../../../core/constants/app_strings.dart';
 import '../../../core/router/route_names.dart';
 import '../../../data/datasources/local/app_data.dart';
 import '../../../data/models/service_model.dart';
+import '../../widgets/common/app_scaffold.dart';
 
 /// 服務列表頁面
 class ServicesPage extends StatelessWidget {
@@ -25,11 +26,9 @@ class ServicesPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(AppStrings.navServices),
-        leading: Builder(
-          builder: (context) => IconButton(
-            icon: const Icon(Icons.menu),
-            onPressed: () => Scaffold.of(context).openDrawer(),
-          ),
+        leading: IconButton(
+          icon: const Icon(Icons.menu),
+          onPressed: () => appScaffoldKey.currentState?.openDrawer(),
         ),
       ),
       body: ListView.builder(

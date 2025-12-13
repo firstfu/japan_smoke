@@ -15,6 +15,7 @@ import '../../../core/constants/app_strings.dart';
 import '../../../core/router/route_names.dart';
 import '../../../data/datasources/local/app_data.dart';
 import '../../../data/models/faq_model.dart';
+import '../../widgets/common/app_scaffold.dart';
 
 /// 常見問題頁面
 class FaqPage extends StatefulWidget {
@@ -32,11 +33,9 @@ class _FaqPageState extends State<FaqPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(AppStrings.navFaq),
-        leading: Builder(
-          builder: (context) => IconButton(
-            icon: const Icon(Icons.menu),
-            onPressed: () => Scaffold.of(context).openDrawer(),
-          ),
+        leading: IconButton(
+          icon: const Icon(Icons.menu),
+          onPressed: () => appScaffoldKey.currentState?.openDrawer(),
         ),
       ),
       body: SingleChildScrollView(

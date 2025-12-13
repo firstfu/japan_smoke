@@ -13,6 +13,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_strings.dart';
 import '../../../data/datasources/local/app_data.dart';
+import '../../widgets/common/app_scaffold.dart';
 
 /// 聯絡我們頁面
 class ContactPage extends StatefulWidget {
@@ -45,11 +46,9 @@ class _ContactPageState extends State<ContactPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(AppStrings.navContact),
-        leading: Builder(
-          builder: (context) => IconButton(
-            icon: const Icon(Icons.menu),
-            onPressed: () => Scaffold.of(context).openDrawer(),
-          ),
+        leading: IconButton(
+          icon: const Icon(Icons.menu),
+          onPressed: () => appScaffoldKey.currentState?.openDrawer(),
         ),
       ),
       body: SingleChildScrollView(

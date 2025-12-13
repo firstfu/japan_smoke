@@ -8,9 +8,11 @@
 /// ============================================================================
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_strings.dart';
+import '../../../core/router/route_names.dart';
 import '../../../data/datasources/local/app_data.dart';
 
 /// 作品案例詳情頁面
@@ -90,9 +92,7 @@ class PortfolioDetailPage extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton.icon(
-                      onPressed: () {
-                        // TODO: 導航到聯絡頁面
-                      },
+                      onPressed: () => context.goNamed(RouteNames.contact),
                       icon: const Icon(Icons.calendar_today),
                       label: const Text(AppStrings.btnBookNow),
                       style: ElevatedButton.styleFrom(

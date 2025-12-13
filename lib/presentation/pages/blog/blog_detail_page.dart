@@ -8,9 +8,11 @@
 /// ============================================================================
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_strings.dart';
+import '../../../core/router/route_names.dart';
 import '../../../data/datasources/local/app_data.dart';
 
 /// 博客文章詳情頁面
@@ -196,9 +198,7 @@ class BlogDetailPage extends StatelessWidget {
                         ),
                         const SizedBox(height: 16),
                         ElevatedButton.icon(
-                          onPressed: () {
-                            // TODO: 導航到聯絡頁面
-                          },
+                          onPressed: () => context.goNamed(RouteNames.contact),
                           icon: const Icon(Icons.phone),
                           label: const Text(AppStrings.btnCallNow),
                         ),

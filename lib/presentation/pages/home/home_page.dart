@@ -9,9 +9,12 @@
 /// ============================================================================
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_strings.dart';
+import '../../../core/router/route_names.dart';
 import '../../../data/datasources/local/app_data.dart';
 
 /// 首頁
@@ -32,9 +35,7 @@ class HomePage extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.phone),
-            onPressed: () {
-              // TODO: 撥打電話
-            },
+            onPressed: () => _launchPhone(context),
           ),
         ],
       ),
@@ -110,17 +111,13 @@ class HomePage extends StatelessWidget {
                 Row(
                   children: [
                     ElevatedButton.icon(
-                      onPressed: () {
-                        // TODO: 導航到聯絡頁面
-                      },
+                      onPressed: () => context.goNamed(RouteNames.contact),
                       icon: const Icon(Icons.calendar_today),
                       label: const Text(AppStrings.btnBookNow),
                     ),
                     const SizedBox(width: 12),
                     OutlinedButton.icon(
-                      onPressed: () {
-                        // TODO: 撥打電話
-                      },
+                      onPressed: () => _launchPhone(context),
                       style: OutlinedButton.styleFrom(
                         foregroundColor: AppColors.textLight,
                         side: const BorderSide(color: AppColors.textLight),
@@ -208,7 +205,10 @@ class HomePage extends StatelessWidget {
     return Card(
       child: InkWell(
         onTap: () {
-          // TODO: 導航到服務詳情
+          context.pushNamed(
+            RouteNames.serviceDetail,
+            pathParameters: {'id': service.id},
+          );
         },
         borderRadius: BorderRadius.circular(12),
         child: Padding(
@@ -353,9 +353,7 @@ class HomePage extends StatelessWidget {
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
               TextButton(
-                onPressed: () {
-                  // TODO: 導航到案例頁面
-                },
+                onPressed: () => context.goNamed(RouteNames.portfolio),
                 child: const Text(AppStrings.btnViewAll),
               ),
             ],
@@ -380,82 +378,90 @@ class HomePage extends StatelessWidget {
 
   /// 案例卡片
   Widget _buildPortfolioCard(BuildContext context, item) {
-    return Container(
-      width: 280,
-      decoration: BoxDecoration(
-        color: AppColors.surface,
-        borderRadius: BorderRadius.circular(12),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.shadow.withValues(alpha: 0.1),
-            blurRadius: 8,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // 圖片區域（佔位）
-          Container(
-            height: 120,
-            decoration: BoxDecoration(
-              color: AppColors.secondary,
-              borderRadius: const BorderRadius.vertical(
-                top: Radius.circular(12),
+    return GestureDetector(
+      onTap: () {
+        context.pushNamed(
+          RouteNames.portfolioDetail,
+          pathParameters: {'id': item.id.toString()},
+        );
+      },
+      child: Container(
+        width: 280,
+        decoration: BoxDecoration(
+          color: AppColors.surface,
+          borderRadius: BorderRadius.circular(12),
+          boxShadow: [
+            BoxShadow(
+              color: AppColors.shadow.withValues(alpha: 0.1),
+              blurRadius: 8,
+              offset: const Offset(0, 2),
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // 圖片區域（佔位）
+            Container(
+              height: 120,
+              decoration: BoxDecoration(
+                color: AppColors.secondary,
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(12),
+                ),
+              ),
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.compare,
+                      size: 32,
+                      color: AppColors.textMuted,
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      '${AppStrings.beforeLabel} / ${AppStrings.afterLabel}',
+                      style: TextStyle(
+                        color: AppColors.textMuted,
+                        fontSize: 12,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
-            child: Center(
+            Padding(
+              padding: const EdgeInsets.all(12),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(
-                    Icons.compare,
-                    size: 32,
-                    color: AppColors.textMuted,
+                  Text(
+                    item.title,
+                    style: Theme.of(context).textTheme.titleSmall,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(height: 4),
-                  Text(
-                    '${AppStrings.beforeLabel} / ${AppStrings.afterLabel}',
-                    style: TextStyle(
-                      color: AppColors.textMuted,
-                      fontSize: 12,
-                    ),
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.location_on,
+                        size: 14,
+                        color: AppColors.textMuted,
+                      ),
+                      const SizedBox(width: 4),
+                      Text(
+                        item.location,
+                        style: Theme.of(context).textTheme.bodySmall,
+                      ),
+                    ],
                   ),
                 ],
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(12),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  item.title,
-                  style: Theme.of(context).textTheme.titleSmall,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                const SizedBox(height: 4),
-                Row(
-                  children: [
-                    const Icon(
-                      Icons.location_on,
-                      size: 14,
-                      color: AppColors.textMuted,
-                    ),
-                    const SizedBox(width: 4),
-                    Text(
-                      item.location,
-                      style: Theme.of(context).textTheme.bodySmall,
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -594,9 +600,7 @@ class HomePage extends StatelessWidget {
           ),
           const SizedBox(height: 24),
           ElevatedButton.icon(
-            onPressed: () {
-              // TODO: 導航到聯絡頁面
-            },
+            onPressed: () => context.goNamed(RouteNames.contact),
             icon: const Icon(Icons.calendar_today),
             label: const Text(AppStrings.btnFreeQuote),
             style: ElevatedButton.styleFrom(
@@ -606,5 +610,20 @@ class HomePage extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  /// 撥打電話
+  Future<void> _launchPhone(BuildContext context) async {
+    final phoneNumber = AppData.company.phone;
+    final Uri phoneUri = Uri(scheme: 'tel', path: phoneNumber);
+    if (await canLaunchUrl(phoneUri)) {
+      await launchUrl(phoneUri);
+    } else {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('無法撥打電話：$phoneNumber')),
+        );
+      }
+    }
   }
 }

@@ -76,6 +76,7 @@ class HomePage extends StatelessWidget {
             image: DecorationImage(
               image: const AssetImage('assets/images/hero-image.png'),
               fit: BoxFit.cover,
+              alignment: Alignment.topCenter,
               colorFilter: ColorFilter.mode(
                 AppColors.primary.withValues(alpha: 0.7),
                 BlendMode.darken,
@@ -400,34 +401,42 @@ class HomePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // 圖片區域（佔位）
-            Container(
-              height: 120,
-              decoration: BoxDecoration(
-                color: AppColors.secondary,
-                borderRadius: const BorderRadius.vertical(
-                  top: Radius.circular(12),
-                ),
+            // 圖片區域
+            ClipRRect(
+              borderRadius: const BorderRadius.vertical(
+                top: Radius.circular(12),
               ),
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.compare,
-                      size: 32,
-                      color: AppColors.textMuted,
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      '${AppStrings.beforeLabel} / ${AppStrings.afterLabel}',
-                      style: TextStyle(
-                        color: AppColors.textMuted,
-                        fontSize: 12,
+              child: Image.asset(
+                item.afterImage,
+                height: 120,
+                width: double.infinity,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return Container(
+                    height: 120,
+                    color: AppColors.secondary,
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.compare,
+                            size: 32,
+                            color: AppColors.textMuted,
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            '${AppStrings.beforeLabel} / ${AppStrings.afterLabel}',
+                            style: TextStyle(
+                              color: AppColors.textMuted,
+                              fontSize: 12,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                  ],
-                ),
+                  );
+                },
               ),
             ),
             Padding(

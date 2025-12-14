@@ -9,7 +9,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:japan_smoke/presentation/widgets/buttons/primary_button.dart';
+import 'package:paint/presentation/widgets/buttons/primary_button.dart';
 
 void main() {
   group('PrimaryButton', () {

@@ -43,7 +43,7 @@ class PortfolioCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Before/After 預覽圖
-            Container(
+            SizedBox(
               width: double.infinity,
               height: 160,
               child: Stack(

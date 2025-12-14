@@ -8,7 +8,7 @@
 /// ============================================================================
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:japan_smoke/data/models/service_model.dart';
+import 'package:paint/data/models/service_model.dart';
 
 void main() {
   group('ServiceModel', () {

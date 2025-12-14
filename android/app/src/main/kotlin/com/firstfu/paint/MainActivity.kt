@@ -1,4 +1,4 @@
-package com.example.japan_smoke
+package com.firstfu.paint
 
 import io.flutter.embedding.android.FlutterActivity
 

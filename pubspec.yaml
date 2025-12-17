@@ -10,7 +10,7 @@
 name: paint
 description: "塗新居 Flutter App - 南投縣專業屋頂清洗、油漆、防水服務"
 publish_to: "none"
-version: 1.0.0+1
+version: 1.0.0+2
 
 environment:
   sdk: ^3.10.3

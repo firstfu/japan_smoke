@@ -278,6 +278,29 @@ class AppScaffold extends StatelessWidget {
                       ),
                     ],
                   ),
+                  const SizedBox(height: 12),
+                  // 隱私權政策與使用者條款連結
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      _buildLegalLink(
+                        context,
+                        label: '隱私權政策',
+                        route: RoutePaths.privacy,
+                      ),
+                      Text(
+                        ' | ',
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                              color: AppColors.textMuted,
+                            ),
+                      ),
+                      _buildLegalLink(
+                        context,
+                        label: '使用者條款',
+                        route: RoutePaths.terms,
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
@@ -316,6 +339,28 @@ class AppScaffold extends StatelessWidget {
         Navigator.pop(context);
         context.go(route);
       },
+    );
+  }
+
+  /// 建構法律連結項目（隱私權政策、使用者條款）
+  Widget _buildLegalLink(
+    BuildContext context, {
+    required String label,
+    required String route,
+  }) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.pop(context);
+        context.push(route);
+      },
+      child: Text(
+        label,
+        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+              color: AppColors.primary,
+              decoration: TextDecoration.underline,
+              decorationColor: AppColors.primary,
+            ),
+      ),
     );
   }
 }

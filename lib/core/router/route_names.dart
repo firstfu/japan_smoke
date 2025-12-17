@@ -49,6 +49,12 @@ abstract class RouteNames {
 
   /// 聯絡我們頁
   static const String contact = 'contact';
+
+  /// 隱私權政策頁
+  static const String privacy = 'privacy';
+
+  /// 使用者條款頁
+  static const String terms = 'terms';
 }
 
 /// 路由路徑常量
@@ -86,4 +92,10 @@ abstract class RoutePaths {
 
   /// 聯絡我們路徑
   static const String contact = '/contact';
+
+  /// 隱私權政策路徑
+  static const String privacy = '/privacy';
+
+  /// 使用者條款路徑
+  static const String terms = '/terms';
 }

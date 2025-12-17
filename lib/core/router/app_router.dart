@@ -21,8 +21,18 @@ import '../../presentation/pages/blog/blog_detail_page.dart';
 import '../../presentation/pages/about/about_page.dart';
 import '../../presentation/pages/faq/faq_page.dart';
 import '../../presentation/pages/contact/contact_page.dart';
+import '../../presentation/pages/legal/webview_page.dart';
 import '../../presentation/widgets/common/app_scaffold.dart';
 import 'route_names.dart';
+
+/// 外部網頁 URL 常量
+class ExternalUrls {
+  /// 隱私權政策網頁
+  static const String privacy = 'https://paint.ailoop.uk/privacy';
+
+  /// 使用者條款網頁
+  static const String terms = 'https://paint.ailoop.uk/terms';
+}
 
 /// 全域導航鍵
 final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -37,6 +47,28 @@ final GoRouter appRouter = GoRouter(
   initialLocation: RoutePaths.home,
   debugLogDiagnostics: true,
   routes: [
+    // 隱私權政策頁面（不使用 ShellRoute，無底部導航）
+    GoRoute(
+      path: RoutePaths.privacy,
+      name: RouteNames.privacy,
+      parentNavigatorKey: rootNavigatorKey,
+      builder: (context, state) => const WebViewPage(
+        title: '隱私權政策',
+        url: ExternalUrls.privacy,
+      ),
+    ),
+
+    // 使用者條款頁面（不使用 ShellRoute，無底部導航）
+    GoRoute(
+      path: RoutePaths.terms,
+      name: RouteNames.terms,
+      parentNavigatorKey: rootNavigatorKey,
+      builder: (context, state) => const WebViewPage(
+        title: '使用者條款',
+        url: ExternalUrls.terms,
+      ),
+    ),
+
     // ShellRoute 提供統一的頁面框架
     ShellRoute(
       navigatorKey: shellNavigatorKey,

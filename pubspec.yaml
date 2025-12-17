@@ -55,6 +55,9 @@ dependencies:
   # 開啟外部連結/電話/地圖
   url_launcher: ^6.2.4
 
+  # 內嵌網頁瀏覽器（隱私權政策、使用者條款）
+  webview_flutter: ^4.10.0
+
   # Markdown 渲染（博客內容）
   flutter_markdown: ^0.7.3
 

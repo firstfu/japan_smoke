@@ -3,7 +3,9 @@
     "allow": [
       "Bash(flutter pub run:*)",
       "Bash(flutter pub get:*)",
-      "Bash(flutter analyze:*)"
+      "Bash(flutter analyze:*)",
+      "mcp__Context7__resolve-library-id",
+      "mcp__Context7__get-library-docs"
     ]
   }
 }
